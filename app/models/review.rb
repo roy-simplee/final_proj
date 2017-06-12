@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
+class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
   attr_accessible :body
