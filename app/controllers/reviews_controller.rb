@@ -4,12 +4,16 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find
+    @review = Review.find(params(:id))
   end
 
   def new
   end
 
   def edit
+  end
+
+  private def review_params
+    params.require(:review)
   end
 end
