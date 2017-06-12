@@ -11,12 +11,15 @@ require 'faker'
 # Create Companies
 100.times do
   Company.create!(
-    name: Faker::Name.name
+    name: Faker::Company.name
     )
 end
+companies = Company.all
 
 # Create Companies
 20.times do
   Review.create!(
-    
+    email: "#{Faker::Internet.user_name}@#{companies.sample.name.delete(' ')}.com",
+    body: Faker::Hacker.say_something_smart
     )
+end
