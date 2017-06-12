@@ -8,19 +8,15 @@
 
 require 'faker'
 
-# Create Users
-10.times do
-  User.create!(
-    email: Faker::Internet.email
-    )
-end
-
+# Create Companies
 100.times do
   Company.create!(
-    name: "#{Faker::Lorem.word}"
+    name: Faker::Name.name
     )
 end
 
-5.times do
+# Create Companies
+20.times do
   Review.create!(
+    
     )
