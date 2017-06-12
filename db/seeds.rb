@@ -9,20 +9,40 @@
 require 'faker'
 
 # Create Companies
-100.times do
+20.times do
   Company.create!(
     name: Faker::Company.name
     )
 end
 companies = Company.all
 
-# Create Companies
-20.times do
+# Create Reviews
+100.times do
   c = companies.sample
   Review.create!(
     email: "#{Faker::Internet.user_name}@#{c.name.delete(' ')}.com",
     title: Faker::Company.catch_phrase,
     body: Faker::Hacker.say_something_smart,
     company: c
+    )
+end
+reviews = Review.all
+
+# Create review votes
+vote_values = [-1, 1]
+1000.times do
+  r = reviews.sample
+  ReviewVote.create!(
+    review: r,
+    vote: vote_values.sample
+    )
+end
+
+# Create company votes
+1000.times do
+  c = companies.sample
+  CompanyVote.create!(
+    company: c,
+    vote: vote_values.sample
     )
 end
