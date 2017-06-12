@@ -1,4 +1,4 @@
 class Review < ActiveRecord::Base
   belongs_to :company
-  attr_accessible :body, :email, :title
+  attr_accessible :body, :email, :title, :company
 end

@@ -2,6 +2,5 @@
 <p>Find me in app/views/reviews/index.html.erb</p>
 
 <% @reviews.each do |review| %>
-  <p><%= link_to review.body
-  
-end
+  <p><b><%= review.company.name %></b>: <%= link_to review.title, review %></p>
+<% end %>

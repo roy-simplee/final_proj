@@ -3,7 +3,7 @@ FinalProj::Application.routes.draw do
   # get "reviews/show"
   # get "reviews/new"
   # get "reviews/edit"
-  resources :posts
+  resources :reviews
 
   get "welcome/about"
   root to: 'welcome#index'
