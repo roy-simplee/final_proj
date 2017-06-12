@@ -20,6 +20,7 @@ companies = Company.all
 20.times do
   Review.create!(
     email: "#{Faker::Internet.user_name}@#{companies.sample.name.delete(' ')}.com",
+    title: Faker::Company.catch_phrase,
     body: Faker::Hacker.say_something_smart
     )
 end
