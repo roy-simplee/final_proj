@@ -13,7 +13,8 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  private def review_params
+  private
+  def review_params
     params.require(:review)
   end
 end
