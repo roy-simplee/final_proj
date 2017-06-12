@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170611163412) do
+ActiveRecord::Schema.define(:version => 20170612075737) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20170611163412) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "posts", :force => true do |t|
+  create_table "reviews", :force => true do |t|
     t.integer  "user_id"
     t.text     "body"
     t.integer  "company_id"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20170611163412) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "posts", ["company_id"], :name => "index_posts_on_company_id"
-  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+  add_index "reviews", ["company_id"], :name => "index_posts_on_company_id"
+  add_index "reviews", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
