@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'faker'
+
+# Create Users
+10.times do
+  User.create!(
+    email: "#{Faker::Lorem.word}@gmail.com")
+end
