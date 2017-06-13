@@ -11,9 +11,6 @@ class ReviewsController < ApplicationController
   def new
   end
 
-  def edit
-  end
-
   private
   def review_params
     params.require(:review)
