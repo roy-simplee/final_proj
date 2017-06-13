@@ -38,4 +38,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'faker'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.1.1.0'
