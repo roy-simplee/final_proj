@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.order(:company_id).all
+    @reviews = Review.order(:company_id).paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @review = Review.find(params[:id])
+    @company = @review.company
   end
 
   def new
