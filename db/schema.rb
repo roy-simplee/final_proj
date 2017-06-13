@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170613131353) do
+ActiveRecord::Schema.define(:version => 20170613134239) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20170613131353) do
     t.integer  "number_of_reviews"
     t.float    "controversy"
     t.integer  "rating"
+    t.text     "description"
   end
 
   create_table "company_votes", :force => true do |t|
