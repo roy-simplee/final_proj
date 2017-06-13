@@ -1,8 +1,9 @@
 FinalProj::Application.routes.draw do
   resources :reviews, except: [:destroy, :edit, :update]
+  resources :companies, except: [:destroy, :edit, :update]
 
   get "welcome/about"
-  root to: 'reviews#index'
+  root to: 'companies#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
