@@ -1,7 +1,8 @@
 class Review < ActiveRecord::Base
   belongs_to :company
   has_many :review_votes, dependent: :destroy
-  attr_accessible :body, :email, :title, :company
+  attr_accessible :body, :email, :title, :company, :score
+  validates :score, inclusion: { in: (0..5), message: "Review score can be 1..5" }
 
   after_save :update_company_popularity
 
