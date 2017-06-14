@@ -39,7 +39,7 @@ vote_values = [-1, 1]
 end
 
 # Create company votes
-1000.times do
+100.times do
   c = companies.sample
   CompanyVote.create!(
     company: c,

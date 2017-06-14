@@ -1,6 +1,7 @@
 FinalProj::Application.routes.draw do
-  resources :reviews, except: [:destroy, :edit, :update]
-  resources :companies, except: [:destroy, :edit, :update]
+  resources :companies, except: [:destroy, :edit, :update] do
+    resources :reviews, except: [:destroy, :edit, :update]
+  end
 
   get "welcome/about"
   root to: 'companies#index'

@@ -5,6 +5,10 @@ class Review < ActiveRecord::Base
 
   after_save :update_company_popularity
 
+  def anonymize_email
+    email.sub(/.*@/, "*****@")
+  end
+
   private
   def update_company_popularity
     company.update_popularity

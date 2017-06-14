@@ -1,2 +1,27 @@
 <h1>Companies#show</h1>
 <p>Find me in app/views/companies/show.html.erb</p>
+
+<h1><%= @company.name %></h1>
+<div class="col-md-4">
+  <%= link_to "Add review", new_company_review_path(@company), class: 'btn btn-success' %>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <p class="lead"><%= @company.description %></p>
+    <% @reviews.each do |review| %>
+      <div class="media">
+        <%#= render partial: 'votes/voter', locals: { review: review } %>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= review.title %>
+          </h4>
+          <small>
+            submitted <%= time_ago_in_words(review.created_at) %> ago by <%= review.anonymize_email %><br/>
+          </small>
+            <%= review.body %>
+        </div>
+      </div>
+    <% end %>
+    <%= will_paginate @reviews %>
+  </div>
+</div>
