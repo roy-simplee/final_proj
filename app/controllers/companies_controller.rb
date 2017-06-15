@@ -1,3 +1,5 @@
+require './app/helpers/reviews_helper.rb'
+
 class CompaniesController < ApplicationController
   def index
     @companies = Company.order('rating DESC').paginate(page: params[:page], per_page: 10)
@@ -10,5 +12,6 @@ class CompaniesController < ApplicationController
   end
 
   def new
+
   end
 end
