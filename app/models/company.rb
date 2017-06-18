@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :metadata
   has_many :reviews, dependent: :destroy
   has_many :company_votes, dependent: :destroy
 

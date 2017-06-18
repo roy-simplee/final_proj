@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170614154313) do
+ActiveRecord::Schema.define(:version => 20170615102342) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20170614154313) do
     t.integer  "company_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "email"
+    t.text     "email"
     t.string   "title"
     t.integer  "score"
   end
