@@ -1,3 +1,5 @@
+require 'clearbit'
+
 class Review < ActiveRecord::Base
   belongs_to :company
   has_many :review_votes, dependent: :destroy
