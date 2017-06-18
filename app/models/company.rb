@@ -8,12 +8,10 @@ class Company < ActiveRecord::Base
     update_attribute(:number_of_reviews, number_of_reviews)
   end
 
-  def update_rating
+  def update_rating_and_controversy
     rating = upvotes - downvotes
     update_attribute(:rating, rating)
-  end
 
-  def update_controversy
     total_votes = upvotes + downvotes
     controversy = total_votes == 0 ?
       0 :

@@ -7,10 +7,11 @@ class Review < ActiveRecord::Base
   Clearbit.key = 'sk_6393bd43130aa6b31075510227f58cd9'
 
   after_save :update_company_popularity
+  after_create :anonymize_email
   before_create :create_company_if_none
 
   def anonymize_email
-    email.sub(/.*@/, "*****@")
+    email.sub!(/.*@/, "*****@")
   end
 
   private
