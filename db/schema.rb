@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170615102342) do
+ActiveRecord::Schema.define(:version => 20170618123319) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20170615102342) do
     t.integer  "rating"
     t.text     "description"
     t.text     "metadata"
+    t.string   "domain"
   end
 
   create_table "company_votes", :force => true do |t|
