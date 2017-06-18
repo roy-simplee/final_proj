@@ -38,5 +38,6 @@ class Review < ActiveRecord::Base
       rescue => e
         nil
       end
+    end
   end
 end
