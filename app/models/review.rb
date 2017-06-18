@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
   attr_accessible :body, :email, :title, :company, :score
   validates :score, inclusion: { in: (0..5), message: "Review score can be 0..5" }
 
-  Clearbit.key = 'sk_6393bd43130aa6b31075510227f58cd9'
+  Clearbit.key = 'sk_18187bebada1d2e206108fa7ff5983c7'
 
   after_save :update_company_popularity
   after_create :anonymize_email
@@ -23,7 +23,7 @@ class Review < ActiveRecord::Base
     company = Company.where('lower(domain) = ?', email.sub(/.*@(.*)/, "\\1").downcase).first
     if !company
       begin
-        response = Clearbit::Enrichment.find(email: email)
+        response = Clearbit::Enrichment.find(email: email, stream: true)
         c = response.company || {
           name: email.sub(/.*@(.*)/, "\\1"),
           description: "No description could be found"
