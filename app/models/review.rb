@@ -22,24 +22,30 @@ class Review < ActiveRecord::Base
   end
 
   def create_company_if_none
-    company = Company.where('lower(domain) = ?', email.sub(/.*@(.*)/, "\\1").downcase).first
+    # First search for existing company by domain
+    company = Company.where('lower(domain) = ?', email.split("@").last.downcase).first
     if !company
       begin
         response = Clearbit::Enrichment.find(email: email, stream: true)
-        c = response.company || {
-          name: email.sub(/.*@(.*)/, "\\1"),
-          description: "No description could be found"
-        }
-
-        company = Company.where('lower(name) = ?', c.name.downcase).first
-        Company.create!(
-          name: c.name,
-          description: c.description,
-          metadata: c
-        ) if !company
+        c = response.company
       rescue => e
-        nil
+        c = {
+          name: email.split("@").last,
+          description: "No description could be found",
+          domain: email.split("@").last,
+          metadata: nil
+        }
       end
+
+      # Try again by name as returned from Clearbit API call
+      company = Company.where('lower(name) = ?', c.name.downcase).first
+      # Finally, create
+      Company.create!(
+        name: c.name,
+        description: c.description,
+        domain: c.domain
+        metadata: c
+      ) if !company
     end
   end
 end
