@@ -12,34 +12,36 @@ require 'faker'
 20.times do
   Company.create!(
     name: Faker::Company.name,
-    description: Faker::Company.catch_phrase
+    description: Faker::Company.catch_phrase,
+    metadata: nil,
+    domain: Faker::Internet.domain_name
     )
 end
 companies = Company.all
 
 # Create Reviews
-# review_scores = (0..5).to_a
-# 100.times do
-#   c = companies.sample
-#   Review.create!(
-#     email: "#{Faker::Internet.user_name}@#{c.name.delete(' ')}.com",
-#     title: Faker::Company.catch_phrase,
-#     body: Faker::Hacker.say_something_smart,
-#     company: c,
-#     score: review_scores.sample
-#     )
-# end
-# reviews = Review.all
+review_scores = (0..5).to_a
+100.times do
+  c = companies.sample
+  Review.create!(
+    email: "#{Faker::Internet.user_name}@#{c.domain.downcase}",
+    title: Faker::Company.catch_phrase,
+    body: Faker::Hacker.say_something_smart,
+    company: c,
+    score: review_scores.sample
+    )
+end
+reviews = Review.all
 
 # # Create review votes
 vote_values = [-1, 1]
-# 1000.times do
-#   r = reviews.sample
-#   ReviewVote.create!(
-#     review: r,
-#     vote: vote_values.sample
-#     )
-# end
+1000.times do
+  r = reviews.sample
+  ReviewVote.create!(
+    review: r,
+    vote: vote_values.sample
+    )
+end
 
 # Create company votes
 100.times do

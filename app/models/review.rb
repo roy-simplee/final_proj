@@ -43,7 +43,7 @@ class Review < ActiveRecord::Base
       Company.create!(
         name: c.name,
         description: c.description,
-        domain: c.domain
+        domain: c.domain,
         metadata: c
       ) if !company
     end
