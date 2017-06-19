@@ -7,7 +7,7 @@
     <% @companies.each do |company| %>
       <div class="media">
         <div class="row">
-        Rating: <%= company.rating %>,&nbsp; <%#= link_to "Reviews: #{company.reviews.count}", company.reviews %>&nbsp; <%= link_to company.name, company %>
+        Review rating: <%= company.rating %>,&nbsp; Controversy<%#= link_to "Reviews: #{company.reviews.count}", company.reviews %>&nbsp; <%= link_to company.name, company %>
           <small>
             <%= company.description %>
           </small>
