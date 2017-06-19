@@ -9,8 +9,8 @@ class Company < ActiveRecord::Base
   end
 
   def update_rating_and_controversy
-    rating = upvotes - downvotes
-    update_attribute(:rating, rating)
+    user_rating = upvotes - downvotes
+    update_attribute(:user_rating, user_rating)
 
     total_votes = upvotes + downvotes
     controversy = total_votes == 0 ?

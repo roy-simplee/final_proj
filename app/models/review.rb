@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
   Clearbit.key = 'sk_18187bebada1d2e206108fa7ff5983c7'
 
   after_save :update_company_popularity
-  after_create :anonymize_email
+  after_create :anonymize_email # TODO only anonymize on display
   before_create :create_company_if_none
 
   def anonymize_email
@@ -43,7 +43,7 @@ class Review < ActiveRecord::Base
       Company.create!(
         name: c.name,
         description: c.description,
-        domain: c.domain
+        domain: c.domain,
         metadata: c
       ) if !company
     end
