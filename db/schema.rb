@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170618123319) do
+ActiveRecord::Schema.define(:version => 20170619092247) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(:version => 20170618123319) do
     t.datetime "updated_at",        :null => false
     t.integer  "number_of_reviews"
     t.float    "controversy"
-    t.integer  "rating"
+    t.integer  "user_rating"
     t.text     "description"
     t.text     "metadata"
     t.string   "domain"
+    t.integer  "review_rating"
   end
 
   create_table "company_votes", :force => true do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20170618123319) do
     t.text     "email"
     t.string   "title"
     t.integer  "score"
+    t.integer  "user_score"
   end
 
   add_index "reviews", ["company_id"], :name => "index_posts_on_company_id"
