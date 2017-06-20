@@ -5,16 +5,14 @@
   <div class="col-md-8">
   <p>Click a company name to see its description and reviews!</p>
     <% @companies.each do |company| %>
-      <!-- <div class="media"> -->
-        <div class="row">
-          <h2><%= link_to company.name, company %></h2>
-          <%= company.description %>
-          <div>
-            Review rating: <%= company.review_rating %> (<%= link_to "#{company.reviews.count} reviews", company_reviews_path(company) %>),
-            user rating: <%= company.user_rating %> (<%= company.company_votes.count %> votes total)
-          </div>
+      <div class="row">
+        <h2><%= link_to company.name, company %></h2>
+        <%= company.description %>
+        <div>
+          Review rating: <%= company.review_rating %> (<%= link_to "#{company.reviews.count} reviews", company_reviews_path(company) %>),
+          user rating: <%= company.user_rating %> (<%= company.company_votes.count %> votes total)
         </div>
-      <!-- </div> -->
+      </div>
     <% end %>
     <%= will_paginate @companies %>
   </div>

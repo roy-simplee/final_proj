@@ -5,7 +5,7 @@ class Companies::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id]).includes(:company)
+    @review = Review.includes(:company).find(params[:id])
     @company = @review.company
   end
 end
