@@ -1,4 +1,6 @@
 FinalProj::Application.routes.draw do
+  # get "mail/create"
+
   resources :companies, only: [:new, :index, :show] do
     resources :reviews, only: [:index, :show], controller: 'companies/reviews'
   end
@@ -6,7 +8,7 @@ FinalProj::Application.routes.draw do
   resources :reviews, only: :index
 
   get "welcome/about"
-  # post "new_email"
+  resources :mail, only: [:create]
   root to: 'companies#index'
 
   # The priority is based upon order of creation:

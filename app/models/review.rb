@@ -9,11 +9,10 @@ class Review < ActiveRecord::Base
   Clearbit.key = 'sk_18187bebada1d2e206108fa7ff5983c7'
 
   after_save :update_company_popularity
-  after_create :anonymize_email # TODO only anonymize on display
   before_create :create_company_if_none
 
   def anonymize_email
-    email.sub!(/.*@/, "*****@")
+    email.sub(/.*@/, "*****@")
   end
 
   private
@@ -38,14 +37,14 @@ class Review < ActiveRecord::Base
       end
 
       # Try again by name as returned from Clearbit API call
-      company = Company.where('lower(name) = ?', c.name.downcase).first
+      company = Company.where('lower(name) = ?', c[:name].downcase).first
       # Finally, create
-      Company.create!(
-        name: c.name,
-        description: c.description,
-        domain: c.domain,
+      self.company = company || Company.create!(
+        name: c[:name],
+        description: c[:description],
+        domain: c[:domain],
         metadata: c
-      ) if !company
+      )
     end
   end
 end
