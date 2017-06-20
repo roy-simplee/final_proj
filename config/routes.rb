@@ -1,7 +1,9 @@
 FinalProj::Application.routes.draw do
-  resources :companies, except: [:destroy, :edit, :update] do
-    resources :reviews, except: [:destroy, :edit, :update]
+  resources :companies, only: [:new, :index, :show] do
+    resources :reviews, only: [:index, :show], controller: 'companies/reviews'
   end
+
+  resources :reviews, only: :index
 
   get "welcome/about"
   root to: 'companies#index'
