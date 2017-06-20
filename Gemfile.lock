@@ -42,11 +42,15 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     diff-lcs (1.2.5)
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.4.2)
       i18n (~> 0.5)
     hike (1.2.3)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.8.4)
     journey (1.0.4)
     jquery-rails (3.1.4)
@@ -56,9 +60,12 @@ GEM
     mail (2.5.5)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailgun-ruby (1.1.6)
+      rest-client (~> 2.0)
     mime-types (1.25.1)
     multi_json (1.12.1)
     nestful (1.1.1)
+    netrc (0.11.0)
     pg (0.21.0)
     polyglot (0.3.5)
     rack (1.4.7)
@@ -91,6 +98,10 @@ GEM
     rake (12.0.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -126,6 +137,9 @@ GEM
     tzinfo (0.3.53)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.4)
     will_paginate (3.0.7)
 
 PLATFORMS
@@ -137,6 +151,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   faker
   jquery-rails
+  mailgun-ruby
   pg
   rails (= 3.2.22.2)
   rails_12factor
